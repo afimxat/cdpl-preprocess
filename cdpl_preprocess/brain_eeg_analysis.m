@@ -55,7 +55,8 @@ function brain_eeg_analysis_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for brain_eeg_analysis
 handles.output = hObject;
 handles.address_of_files='';
-handles.address_of_history='C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
+handles.address_of_history='C:\Users\umram-utku\Documents\MATLAB\cdpl_preprocess\history';
+%handles.address_of_history='C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
 % Update handles structure
 %warning('off','MATLAB:namelengthmaxexceeded')
 guidata(hObject, handles)
@@ -206,7 +207,8 @@ function browse_pushbutton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 rawFiles=[];
-[pathname] = uigetdir('C:\Users\Toygan\Desktop\fieldtrip\data_values\raw','EEG Path Browser');
+%[pathname] = uigetdir('C:\Users\Toygan\Desktop\fieldtrip\data_values\raw','EEG Path Browser');
+[pathname] = uigetdir('C:\Users\umram-utku\Documents\MATLAB\cdpl_preprocess\raw','EEG Path Browser');
 set(handles.home_folder_text,'String',pathname)
 rawFilePaths=dir([pathname,'\*.eeg']);
 
@@ -218,7 +220,8 @@ for i=1:length(listOfRawFiles)
     rawFiles{i}.childList=cell(1);
 end
 
-pathname = 'C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
+%pathname = 'C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
+pathname = 'C:\Users\umram-utku\Documents\MATLAB\cdpl_preprocess\history';
 historyFilePaths=dir([pathname,'\*.mat']);
 % keyboard
 listOfHistoryFiles={historyFilePaths.name};
@@ -231,12 +234,12 @@ for counter=1:length(historyFiles)
     
 end
 historyTree=rawFiles;
-
+disp('second')
+keyboard
 for counter=1:length(historyFiles) 
     historyTree=addHistory(historyFiles{counter},historyTree);
 end
-disp('second')
-keyboard
+
 % %%%CONTROL FOR LAST SELECTION
 % if((get(handles.step_list_listbox,'Value')==0)||(get(handles.step_list_listbox,'Value')>1))
 %     set(handles.step_list_listbox,'Value',1);
