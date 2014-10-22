@@ -92,6 +92,7 @@ restore_history(handles)
 
 
 
+
 % --- Executes during object creation, after setting all properties.
 function step_list_listbox_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to step_list_listbox (see GCBO)
@@ -219,7 +220,7 @@ end
 
 pathname = 'C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
 historyFilePaths=dir([pathname,'\*.mat']);
-
+% keyboard
 listOfHistoryFiles={historyFilePaths.name};
 historyFiles=cell(length(listOfHistoryFiles),1);
 for counter=1:length(historyFiles)

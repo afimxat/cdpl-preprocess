@@ -1,5 +1,4 @@
 function [ historyTree] =addHistory ( aHistoryFile,historyTree)
-    keyboard
     thereisParent=isfield(aHistoryFile.cfg,'previous');
     if(~thereisParent)
         [~,fileName,ext]=fileparts(aHistoryFile.cfg.dataset);
