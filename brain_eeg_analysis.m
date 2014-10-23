@@ -219,25 +219,23 @@ disp(listOfRawFiles);
 rawFiles=cell(length(listOfRawFiles),1);
 for i=1:length(listOfRawFiles)
     rawFiles{i}.fileName=listOfRawFiles{i};
-    rawFiles{i}.childList=[];
+    rawFiles{i}.childList=cell(1);
 end
 historyFilePaths=dir([histLoc,'\*.mat']);
-% keyboard
 listOfHistoryFiles={historyFilePaths.name}
 historyFiles=cell(length(listOfHistoryFiles),1);
 for counter=1:length(historyFiles)
     aCFG=open([histLoc,filesep,listOfHistoryFiles{counter}]);
     aHistoryFile=aCFG.(char(fieldnames(aCFG)));
-    aHistoryFile.childlist=[];
+    aHistoryFile.childList=cell(1);
     historyFiles{counter}=aHistoryFile;
     
 end
 historyTree=rawFiles;
-keyboard
 for counter=1:length(historyFiles)
     historyTree=addHistory(historyFiles{counter},historyTree);
 end
-
+keyboard
 % %%%CONTROL FOR LAST SELECTION
 % if((get(handles.step_list_listbox,'Value')==0)||(get(handles.step_list_listbox,'Value')>1))
 %     set(handles.step_list_listbox,'Value',1);

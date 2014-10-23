@@ -1,4 +1,4 @@
-function [ added,historyTree] = isAdded( callTime,historyTree, aChildHistoryFile )
+function [ added] = isAdded( callTime,historyTree, aChildHistoryFile )
 %UNTÝTLED2 Summary of this function goes here
 %   Detailed explanation goes here
 %historyTree üzerinde gez ve cfg nin altýndaki callinfonun altýndaki call
@@ -10,7 +10,7 @@ for i=1:length(historyTree)
     for j=1:length(aHistory.childList)
         aChild=aHistory.childList{j};
         if ~isempty(aChild)
-            [added,historyTree]=isCallTimein(aChild,callTime,historyTree,aChildHistoryFile);
+            [added]=isCallTimein(aChild,callTime,aChildHistoryFile);
         end
     end
 end
