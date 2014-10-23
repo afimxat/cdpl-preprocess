@@ -58,14 +58,14 @@ handles.address_of_files='';
 if strcmp(strtrim(hostName),'umram-utku-PC')
     handles.address_of_history='C:\Users\umram-utku\Documents\MATLAB\cdpl_preprocess\history';
     handles.address_of_raw='C:\Users\umram-utku\Documents\MATLAB\cdpl_preprocess\raw';
-    handles.address.github='C:\Users\umram-utku\Documents\GitHub\cdpl-preprocess\';
+    handles.address.github='C:\Users\umram-utku\Documents\GitHub\';
 else
     handles.address_of_history='C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
     handles.address_of_raw='C:\Users\Toygan\Desktop\fieldtrip\data_values\raw';
     handles.address.github='?';
 end
 cd(handles.address.github);
-addpath(handles.address.github,[handles.address.github,'misc\']);
+addpath(handles.address.github,[handles.address.github,filesep,'misc\'])
 
 %
 % Update handles structure
@@ -215,7 +215,6 @@ set(handles.home_folder_text,'String',pathname)
 rawFilePaths=dir([pathname,'\*.eeg']);
 
 listOfRawFiles={rawFilePaths.name};
-disp(listOfRawFiles);
 rawFiles=cell(length(listOfRawFiles),1);
 for i=1:length(listOfRawFiles)
     rawFiles{i}.fileName=listOfRawFiles{i};
