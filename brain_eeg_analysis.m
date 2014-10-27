@@ -216,10 +216,11 @@ rawFilePaths=dir([pathname,'\*.eeg']);
 
 listOfRawFiles={rawFilePaths.name};
 disp(listOfRawFiles);
+keyboard;
+historyTree=tree();
 rawFiles=cell(length(listOfRawFiles),1);
 for i=1:length(listOfRawFiles)
-    rawFiles{i}.fileName=listOfRawFiles{i};
-    rawFiles{i}.childList=cell(1);
+    [historyTree listOfRawFiles{2,i}]=historyTree.addnode(1,listOfRawFiles{i});
 end
 historyFilePaths=dir([histLoc,'\*.mat']);
 listOfHistoryFiles={historyFilePaths.name}
@@ -229,7 +230,6 @@ for counter=1:length(historyFiles)
     aHistoryFile=aCFG.(char(fieldnames(aCFG)));
     aHistoryFile.childList=cell(1);
     historyFiles{counter}=aHistoryFile;
-    
 end
 historyTree=rawFiles;
 for counter=1:length(historyFiles)

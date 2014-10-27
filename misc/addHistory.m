@@ -9,7 +9,7 @@ if(~thereisParent)
     historyTree{index}.childList{end}=aChildHistoryFile;
 else
     parent=aChildHistoryFile.cfg.previous;
-    [added,historyTree]=isAdded(parent.callinfo.calltime,historyTree,aChildHistoryFile);
+    [added,historyTree]=addUnderParent(parent.callinfo.calltime,historyTree,aChildHistoryFile);
     if(added)
     else
         parent.childList{end}=aChildHistoryFile;
