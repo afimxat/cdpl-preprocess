@@ -65,7 +65,7 @@ else
     handles.address.github='?';
 end
 cd(handles.address.github);
-addpath(handles.address.github,[handles.address.github,'misc\']);
+addpath(handles.address.github,[handles.address.github,'misc\'],genpath([handles.address.github,'lib\']));
 
 %
 % Update handles structure
@@ -216,14 +216,13 @@ rawFilePaths=dir([pathname,'\*.eeg']);
 
 listOfRawFiles={rawFilePaths.name};
 disp(listOfRawFiles);
-keyboard;
 historyTree=tree();
 rawFiles=cell(length(listOfRawFiles),1);
 for i=1:length(listOfRawFiles)
-    [historyTree listOfRawFiles{2,i}]=historyTree.addnode(1,listOfRawFiles{i});
+    [historyTree listOfRawFiles{2,i}]=historyTree.addnode(1,listOfRawFiles{1,i});
 end
 historyFilePaths=dir([histLoc,'\*.mat']);
-listOfHistoryFiles={historyFilePaths.name}
+listOfHistoryFiles={historyFilePaths.name};
 historyFiles=cell(length(listOfHistoryFiles),1);
 for counter=1:length(historyFiles)
     aCFG=open([histLoc,filesep,listOfHistoryFiles{counter}]);
@@ -231,9 +230,10 @@ for counter=1:length(historyFiles)
     aHistoryFile.childList=cell(1);
     historyFiles{counter}=aHistoryFile;
 end
-historyTree=rawFiles;
 for counter=1:length(historyFiles)
-    historyTree=addHistory(historyFiles{counter},historyTree);
+    aHistory=historyFiles{counter};
+    childHistoryNode=tree(aHistory);
+    historyTree=addHistory(childHistoryNode,historyTree);
 end
 keyboard
 % %%%CONTROL FOR LAST SELECTION
