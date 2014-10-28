@@ -66,7 +66,7 @@ else
 end
 cd(handles.address.github);
 addpath(handles.address.github,[handles.address.github,'misc\'],genpath([handles.address.github,'lib\']));
-
+%%toy
 %
 % Update handles structure
 %warning('off','MATLAB:namelengthmaxexceeded')
