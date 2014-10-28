@@ -62,7 +62,7 @@ if strcmp(strtrim(hostName),'umram-utku-PC')
 else
     handles.address_of_history='C:\Users\Toygan\Desktop\fieldtrip\data_values\history';
     handles.address_of_raw='C:\Users\Toygan\Desktop\fieldtrip\data_values\raw';
-    handles.address.github='?';
+    handles.address.github='C:\Users\Toygan\Documents\GitHub\cdpl-preprocess\';
 end
 cd(handles.address.github);
 addpath(handles.address.github,[handles.address.github,'misc\'],genpath([handles.address.github,'lib\']));
