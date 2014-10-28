@@ -1,5 +1,4 @@
 function nodeIndex=checkIfNodeIsInTree(theNode,historyTree)
-keyboard
 iterator=historyTree.depthfirstiterator;
 found=0;
 for nodeIndex=iterator

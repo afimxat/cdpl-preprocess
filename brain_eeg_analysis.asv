@@ -99,9 +99,10 @@ listIndex=get(hObject,'Value')
 historyTree=handles.historyTree;
 nodeIndexes=handles.listBoxNodeIndexes;
 theNode=historyTree.get(nodeIndexes(listIndex));
+keyboard
 panelStr=cdpl_getRelevantInfoForPanel(theNode);
 panelStr=strvcat(panelStr);
-set(handles.property_text,'String',panelStr);
+set(handles.step_properties_panel,'String',panelStr);
 guidata(hObject,handles);
 % restore_history(handles)
 
