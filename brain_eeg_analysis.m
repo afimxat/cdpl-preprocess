@@ -95,12 +95,13 @@ function step_list_listbox_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns step_list_listbox contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from step_list_listbox
-listIndex=get(hObject,'Value')
+listIndex=get(hObject,'Value');
 historyTree=handles.historyTree;
 nodeIndexes=handles.listBoxNodeIndexes;
 theNode=historyTree.get(nodeIndexes(listIndex));
 panelStr=cdpl_getRelevantInfoForPanel(theNode);
 panelStr=strvcat(panelStr);
+handles.activeNode=theNode;
 set(handles.property_text,'String',panelStr);
 guidata(hObject,handles);
 % restore_history(handles)
